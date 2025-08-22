@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/sumanthskc/Calculator-app.git'
+                git branch: 'main', url: 'https://github.com/HardikUpadhyay007/devops-assignment.git'
 
             }
         }
