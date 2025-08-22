@@ -2,49 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Dependencies') {
+        stage('Checkout Code') {
             steps {
-                bat 'python -m pip install --upgrade pip'
-            }
-        }
+                git branch: 'main', url: 'https://github.com/sumanthskc/Calculator-app.git'
 
-        stage('Run Tests') {
-            steps {
-                bat 'python -m unittest discover'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t devops-assignment .'
+                bat 'docker build -t calculator-app .'
+            }
+        }
+
+        stage('Run Tests in Container') {
+            steps {
+                bat 'docker run --rm calculator-app'
             }
         }
     }
 }
-
-
-
-// pipeline {
-//     agent any
-
-//     stages {
-//         stage('Checkout') {
-//             steps {
-//                 checkout scm
-//             }
-//         }
-
-//         stage('Run Unit Tests') {
-//             steps {
-//                 sh 'docker build -t devops-assignment-test .'
-//                 sh 'docker run --rm devops-assignment-test python -m unittest discover'
-//             }
-//         }
-
-//         stage('Build Docker Image') {
-//             steps {
-//                 sh 'docker build -t devops-assignment .'
-//             }
-//         }
-//     }
-// }

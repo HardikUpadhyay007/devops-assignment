@@ -1,8 +1,9 @@
-# Dockerfile
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY . /app
+COPY . .
 
-CMD ["python", "-m", "unittest", "discover"]
+RUN pip install -r requirements.txt
+
+CMD ["python", "-m", "unittest", "test_calculator.py"]

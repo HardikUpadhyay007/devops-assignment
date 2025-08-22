@@ -1,17 +1,13 @@
-# test_calculator.py
 import unittest
-import calculator
+from calculator import add, subtract, multiply
 
 class TestCalculator(unittest.TestCase):
-
     def test_add(self):
-        self.assertEqual(calculator.add(2, 3), 5)
-
+        self.assertEqual(add(3,3),6)
     def test_subtract(self):
-        self.assertEqual(calculator.subtract(5, 3), 2)
+        self.assertEqual(subtract(5,2),3)
+    def test_add(self):
+        self.assertEqual(multiply(3,6),18)
 
-    def test_multiply(self):
-        self.assertEqual(calculator.multiply(4, 3), 12)
-
-if __name__ == '__main__':
+if __name__=='__main__':
     unittest.main()
